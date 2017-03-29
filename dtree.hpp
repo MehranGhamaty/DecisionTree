@@ -2,49 +2,74 @@
 #ifndef DTREE_H
 #define DTREE_H
 
-#include <vector>
+#include <memory>
+
+
+  // template<
+  //     typename T, 
+  //     template<typename=T, typename=allocator<T> > typename A,
+  //     template<typename=A<T>, typename=allocator<A<T> > > typename M > 
+
 
 namespace dtree
 {
-  template <typename Label>
-  int numdifferentelements(const std::vector<int> &);
+  using std::allocator;
 
-  template <typename Label>
-  float calcscore(const std::vector<Label> &,const int &);
+  template<
+      typename T, 
+      template<typename=T, typename=allocator<T> > typename A>
+  int numdifferentelements(const A<T> &);
 
-  template <typename Label>
-  std::vector<Label> countclasses(const std::vector<Label> &,const int &);
+  template<typename T>
+  bool compare(const T&, const T&);
 
-  template <typename T, typename O> 
-  inline bool compare(T, O);
+  template<
+      typename T, 
+      template<typename=T, typename=allocator<T> > typename A>
+  float calcscore(const A<T> &,const int &);
 
-  template <typename Number>
-  std::vector<Number> findsplits(const std::vector<Number>&);
-  template <typename Number>
-  std::vector<std::vector<Number> > findallsplits(const std::vector<std::vector<Number> >&);
+  template<
+      typename T, 
+      template<typename=T, typename=allocator<T> > typename A>
+  A<T> countclasses(const A<T> &,const int &);
 
-  template<typename Number, typename Label>
-  float gini(const std::vector<Number>& ,const std::vector<Label>&, int, Number);
+  template<
+      typename T, 
+      template<typename=T, typename=allocator<T> > typename A,
+      template<typename=A<T>, typename=allocator<A<T> > > typename M > 
+  M<A<T> > findallsplits(const M<A<T> > &);
 
-  template<class Number, class Label>
+  template<
+      typename T, 
+      template<typename=T, typename=allocator<T> > typename A >
+  float gini(const A<T>& ,const A<T>&, int, T);
+
+  
+  template<
+      typename T, 
+      template<typename=T, typename=allocator<T> > typename A,
+      template<typename=A<T>, typename=allocator<A<T> > > typename M > 
   class TreeNode
   {
     public:
-      TreeNode(const std::vector<std::vector<Number> >&,const std::vector<Label>&);
-      Label predictexample(std::vector<Number>);
+      TreeNode(const M<A<T> >&,const A<T>&);
+      T predictexample(A<T>); //A is an example
       void prunetree(TreeNode);
     private:
-      //do we need this?
-      std::vector<Number> splits; //keeps the remaining splits if we were to build from this node
-
+      //do we need this? seems like after we find the splits we wont need to keep track of them
+      //A<T> splits; //keeps the remaining splits if we were to build from this node, we won't have to keep calculating (meh too much to worry about)
+      //int numclasses; 
+      
       bool stump; //if stump is true we will predict this stump value
-      Label prediction; //value to predict if it is a stump
-      int attribute; // the attribute we will use to check against
-      Number breakpoint; // the breakpoint at that attribute
+      T prediction; //value to predict if it is a stump
+      int featuer; // the attribute we will use to check against
+      T breakpoint; // the breakpoint at that attribute
 
       TreeNode *left;  //pointer to the node if our split is false
       TreeNode *right; //pointer to the node if our split is true
   };
+
+
 }
 
 #endif
