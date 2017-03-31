@@ -5,6 +5,7 @@
 #include <iostream>
 #include "dtree.cpp"
 
+
 using namespace std;
 
 auto loadfile() {
@@ -21,8 +22,7 @@ int main(int argc, char* argv[]) {
   };
   vector<int> ytrain = {0, 0, 1, 1, 1, 0, 1, 2, 2, 2};
 
-  dtree::TreeNode<float, int> tree(Xtrain, ytrain);
-  
+  dtree::TreeNode<float, vector, vector, vector, int, vector> tree(Xtrain, ytrain);
 
   int prediction = tree.predictexample({2,1,1});
 

@@ -2,37 +2,59 @@
 #ifndef DTREE_H
 #define DTREE_H
 
-#include <vector> //get ride of this completely with templates 
 #include <ostream>
+#include <memory> // for allocator
 
 namespace dtree
 {
+    using std::allocator;
+    
     template <typename T, typename O> 
     inline bool compare(T, O);
 
-    template <typename Label>
-    int numdifferentelements(const std::vector<int> &);
+    template <
+        typename Label,
+        template<typename=Label, typename=allocator<Label> > typename y>
+    int numdifferentelements(const y<Label> &);
 
-    template <typename Label>
-    float calcscore(const std::vector<Label> &,const int &);
+    template <
+        typename Label,
+        template<typename=Label, typename=allocator<Label> > typename y>
+    float calcscore(const y<Label> &,const int &);
 
-    template <typename Label>
-    std::vector<Label> countclasses(const std::vector<Label> &,const int &);
-
-
-    template <typename Number>
-    std::vector<std::vector<Number> > findallsplits(const std::vector<std::vector<Number> >&);
-
-    template<typename Number, typename Label>
-    float gini(const std::vector<Number>& ,const std::vector<Label>&, int, Number);
+    template <
+        typename Label,
+        template<typename=Label, typename=allocator<Label> > typename y>
+    y<Label> countclasses(const y<Label> &,const int &);
 
 
-    template<class Number, class Label>
+    template <
+        typename Number,
+        template<typename=Number, typename=allocator<Number> > typename Attribute,
+        template<typename=Attribute<Number>, typename=allocator<Attribute<Number> > > typename X> 
+    X<Attribute<Number> > findallsplits(const X<Attribute<Number> >&);
+    //maybe use a hashtable instead of sorting and get the splits in set? (might need to change template)
+
+    template<
+        typename Number, 
+        template<typename=Number, typename=allocator<Number> > typename Attribute,
+        typename Label,
+        template<typename=Label, typename=allocator<Label> > typename Labels>
+    float gini(const Attribute<Number>& ,const Labels<Label>&, int, Number);
+
+
+    template<
+        typename Number, 
+        template<typename=Number, typename=allocator<Number> > typename Example,
+        template<typename=Number, typename=allocator<Number> > typename Attribute,
+        template<typename=Attribute<Number>, typename=allocator<Attribute<Number> > > typename X,
+        typename Label,
+        template<typename=Label, typename=allocator<Label> > typename Labels>
     class TreeNode {
         public:
-        TreeNode(const std::vector<std::vector<Number> >&,const std::vector<Label>&);
-        Label predictexample(std::vector<Number>);
-        void prunetree(const std::vector<std::vector<Number> >&,const std::vector<Label>&);
+        TreeNode(const X<Attribute<Number> >&,const Labels<Label>&);
+        Label predictexample(Example<Number>);
+        void prunetree(const X<Attribute<Number> >&,const Labels<Label>&);
         int getchildrenerrors();
         friend std::ostream& operator<<(std::ostream& stream, const TreeNode& tree){
             if(tree.stump){
@@ -45,7 +67,7 @@ namespace dtree
         }
         private:
         //std::vector<Number> splits; //keeps the remaining splits if we were to build from this node
-        int errorswithstump;
+        int errorswithstump; //used for pruning
         bool stump; //if stump is true we will predict this stump value
         Label prediction; //value to predict if it is a stump
         int attribute; // the attribute we will use to check against
