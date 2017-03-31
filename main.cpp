@@ -5,31 +5,44 @@
 #include <iostream>
 #include "dtree.cpp"
 
+using namespace std;
 
-int main(int argc, char* argv[])
-{
-  std::vector<std::vector<float> > Xtrain = 
+auto loadfile() {
+
+}
+
+int main(int argc, char* argv[]) {
+  vector<vector<float> > Xtrain = 
   {
-    {1, 1, 2, 3, 3, 3, 1, 2, 2, 2},
-    {1, 2, 3, 4, 1, 1, 4, 2, 3, 3},
-    {2, 2, 1, 0, 2, 1, 1, 2, 2, 1},
+    {1, 1, 2, 3, 3, 3, 1, 2, 2, 2}, //attribute 0
+    {1, 2, 3, 4, 1, 1, 4, 2, 3, 3}, //attribute 1 split at 2.5 means true classes are: 0,0,1,0,2,
+    {2, 2, 1, 0, 2, 1, 1, 2, 2, 1}, //attribute 2
+  //{0, 0, 1, 1, 1, 0, 1, 2, 2, 2};
   };
-  std::vector<int> Ytrain = {0, 0, 1, 1, 1, 0, 1, 2, 2, 2};
+  vector<int> ytrain = {0, 0, 1, 1, 1, 0, 1, 2, 2, 2};
 
-  dtree::TreeNode<float, int> tree(Xtrain, Ytrain);
+  dtree::TreeNode<float, int> tree(Xtrain, ytrain);
   
 
   int prediction = tree.predictexample({2,1,1});
 
-  std::cout << prediction << std::endl;
-  /*
-  for(const auto& row : Xtrain)
+  cout << prediction << endl;
+
+  cout << tree;
+
+  vector<vector<float> > Xprune = 
   {
-    for(const auto& val : row)
-      std::cout << val << "\t";
-    std::cout << std::endl;
-  }
-  */
+    {0, 3, 2, 9, 2, 1, 4, 0, 2, 1},
+    {0, 2, 1, 3, 3, 1, 0, 4, 1, 3},
+    {3, 4, 3, 3, 0, 0, 1, 1, 2, 1},
+  };
+  vector<int> yprune = {0, 1, 1, 2, 0, 0, 0, 1, 1, 1};
+
+
+  tree.prunetree(Xprune, yprune);
+
+  cout << "Pruned Tree:" << endl << tree;
+
 
 }
 

@@ -1,0 +1,91 @@
+t/f size: 3, 7
+gini score for attribute 0 with split 1.5 is 5
+t/f size: 7, 3
+gini score for attribute 0 with split 2.5 is 5
+t/f size: 3, 7
+gini score for attribute 1 with split 1.5 is 5
+t/f size: 5, 5
+gini score for attribute 1 with split 2.5 is 4
+t/f size: 8, 2
+gini score for attribute 1 with split 3.5 is 5
+t/f size: 1, 9
+gini score for attribute 2 with split 0.5 is 6
+t/f size: 5, 5
+gini score for attribute 2 with split 1.5 is 5
+
+making True stuff
+t/f size: 2, 3
+gini score for attribute 0 with split 1.5 is 2
+t/f size: 3, 2
+gini score for attribute 0 with split 2.5 is 2
+t/f size: 3, 2
+gini score for attribute 1 with split 1.5 is 2
+t/f size: 1, 4
+gini score for attribute 2 with split 1.5 is 2
+making True stuff
+t/f size: 1, 1
+gini score for attribute 1 with split 1.5 is 0
+making True stuff
+making False stuff
+making False stuff
+t/f size: 1, 2
+gini score for attribute 0 with split 2.5 is 1
+t/f size: 2, 1
+gini score for attribute 1 with split 1.5 is 1
+t/f size: 1, 2
+gini score for attribute 2 with split 1.5 is 1
+making True stuff
+making False stuff
+t/f size: 1, 1
+gini score for attribute 2 with split 1.5 is 0
+making True stuff
+making False stuff
+making False stuff
+t/f size: 1, 4
+gini score for attribute 0 with split 1.5 is 2
+t/f size: 4, 1
+gini score for attribute 0 with split 2.5 is 2
+t/f size: 3, 2
+gini score for attribute 1 with split 3.5 is 1
+t/f size: 1, 4
+gini score for attribute 2 with split 0.5 is 2
+t/f size: 4, 1
+gini score for attribute 2 with split 1.5 is 1
+making True stuff
+t/f size: 2, 1
+gini score for attribute 2 with split 1.5 is 1
+making True stuff
+making False stuff
+making False stuff
+t/f size: 1, 1
+gini score for attribute 0 with split 2 is 0
+t/f size: 1, 1
+gini score for attribute 2 with split 0.5 is 0
+making True stuff
+making False stuff
+1
+if attribute[1] is less than 2.5 then 
+if attribute[1] is less than 3.5 then 
+if attribute[0] is less than 2 then 
+1
+else
+1
+else
+if attribute[2] is less than 1.5 then 
+2
+else
+2
+else
+if attribute[0] is less than 1.5 then 
+if attribute[0] is less than 2.5 then 
+if attribute[2] is less than 1.5 then 
+1
+else
+0
+else
+2
+else
+if attribute[1] is less than 1.5 then 
+0
+else
+0
