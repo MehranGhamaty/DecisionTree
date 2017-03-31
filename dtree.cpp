@@ -30,7 +30,7 @@ namespace dtree {
   template<typename Label>
   std::vector<Label> countclasses(const std::vector<Label>& classes,const int& numclasses) {
     std::vector<Label> count((*std::max_element(classes.begin(), classes.end())) + 1, 0); //well should be max of classes
-    for(const Label& val: classes){count.at(val) += 1;}
+    boost::range::for_each(classes, [&](Label i) {++count.at(i);});
     return count;
   }
 
