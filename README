@@ -1,6 +1,0 @@
-
-Problem queue:
-
-SPLITS
-  if using int we need to use floating point to get in the "middle" not really that important
-  Major issue is our splits end in 0, all points go to one "side" and causes divide by 0 error
