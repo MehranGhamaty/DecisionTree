@@ -1,0 +1,23 @@
+Trees use Gini Index to calculate information gain for splits.
+
+train a tree with:
+  dtree::TreeNode<float , vector , vector   , vector, int  , vector> tree(Xtrain, ytrain);
+                 <Number, Example, Attribute, X     , Label, Labels>
+  template types are:
+  Number:    type of the values in the training set (only supports numerics)
+  Example:   container for an example, only used for predicting
+  Attribute: could have made this the same as an example
+  X:         container of Attributes
+  Label:     type of labels
+  Labels:    container of labels
+
+prune a tree with:
+  tree.prunetree(Xprune, yprune);
+
+Make a prediction:
+  int prediction = tree.predictexample({2,1,1});
+
+print the tree (the if statetments):
+  cout << tree;
+  
+Tested with gcc 6.3.1
