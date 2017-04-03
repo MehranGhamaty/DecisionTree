@@ -21,3 +21,7 @@ print the tree (the if statetments):
   cout << tree;
   
 Tested with gcc 6.3.1
+
+Notes to Self:
+Thats why iterators are important, I can just change the container type in the .hpp, since realistically the user shouldn't
+have to pick a template type. 
