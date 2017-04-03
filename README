@@ -23,5 +23,5 @@ print the tree (the if statetments):
 Tested with gcc 6.3.1
 
 Notes to Self:
-Thats why iterators are important, I can just change the container type in the .hpp, since realistically the user shouldn't
-have to pick a template type. 
+Thats why iterators are important, I can just change the container type in the .hpp, and keep the functions the same.
+Realistically the user shouldn't have to pick the container. 
