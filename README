@@ -22,8 +22,4 @@ print the tree (the if statetments):
   
 Tested with gcc 6.3.1
 
-Notes to Self:
-Thats why iterators are important, I can just change the container type in the .hpp, and keep the functions the same.
-Realistically the user shouldn't have to pick the container. 
-
-I want a static object at the end to predict with. Could probably get rid of recurssion for most of the functions. 
+Should probably be rewritten (this is already faster than scikit packages and I could make it way faster than it already is.)
