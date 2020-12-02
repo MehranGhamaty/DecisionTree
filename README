@@ -22,4 +22,4 @@ print the tree (the if statetments):
   
 Tested with gcc 6.3.1
 
-Should probably be rewritten (this is already faster than scikit packages and I could make it way faster than it already is.)
+Should probably be rewritten (this is already faster than scikit packages and I could make it even quicker.)
