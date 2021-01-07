@@ -4,8 +4,8 @@ Train a tree with:
   template types are:
   Number:    type of the values in the training set (only supports numerics)
   Example:   structure for an example for predicting
-  Attribute: could have made this the same as an example
-  X:         container of Attributes
+  Attribute: mirror the example
+  X:         structure of Attributes
   Label:     type of labels
   Labels:    structure for the labels
 
