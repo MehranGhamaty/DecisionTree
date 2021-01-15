@@ -1,13 +1,15 @@
+The gini score is the criteria for generating splits. 
+
 Train a tree with:
   dtree::TreeNode<float , vector , vector   , vector, int  , vector> tree(Xtrain, ytrain);
                  <Number, Example, Attribute, X     , Label, Labels>
   template types are:
-  Number:    type of the values in the training set (only supports numerics)
-  Example:   structure for an example for predicting
-  Attribute: mirror the example
-  X:         structure of Attributes
-  Label:     type of labels
-  Labels:    structure for the labels
+  Number:    Type of the values in the training set (only supports numerics)
+  Example:   Structure for an example for predicting
+  Attribute: Mirror the example
+  X:         Structure of Attributes
+  Label:     Type of labels
+  Labels:    Structure for the labels
 
 prune a tree with:
   tree.prunetree(Xprune, yprune);
